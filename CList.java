@@ -203,6 +203,9 @@ public class CList<T> implements List<T> {
      * Move the current position to the right always. 
      */
     public void strongNext() {
+        if (this.size == 0) {
+            return;
+        }
         this.curr = this.curr.next;
     }
 
