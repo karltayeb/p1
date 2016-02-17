@@ -66,14 +66,14 @@ public class CList<T> implements List<T> {
         this.size++;
         /** Case where list is empty */
         if (this.size == 1) {
-            Node n = new Node(t,null,null);
+            Node n = new Node(t, null, null);
             n.next = n;
             n.prev = n;
             this.head = n;
             this.curr = n;
             return true;
         }
-        Node n = new Node (t, this.curr.prev, this.curr);
+        Node n = new Node(t, this.curr.prev, this.curr);
         n.prev.next = n;
         n.next.prev = n;
         // move the head if you inserted at head
@@ -163,7 +163,7 @@ public class CList<T> implements List<T> {
      * Set the current position to the start of the list.
      */
     public void moveToStart() {
-        if (size != 0) {
+        if (this.size != 0) {
             this.curr = this.head;    // move curr to head
         }
     }
@@ -212,7 +212,7 @@ public class CList<T> implements List<T> {
      */
     public int currPos() {
         int curPos = 0;        // counter for position number
-        if (this.size == 0){
+        if (this.size == 0) {
             return curPos;
         }
         Node temp = this.curr;    // save current location;
@@ -247,12 +247,14 @@ public class CList<T> implements List<T> {
      * @return true if the current position is the end of the list
      */
     public boolean isAtEnd() {
-        if (this.curr== this.head.prev) {
+        if (this.curr == this.head.prev) {
             return true;
         } 
         return false;
     }
-
+    /** toString function for CList.
+     *@return a string representation of the circular list
+     */
     public String toString() {
         if (this.size == 0) {
             return "[]";
