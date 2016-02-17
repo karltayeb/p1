@@ -123,16 +123,19 @@ public class CList<T> implements List<T> {
         }
         this.curr.prev.next = this.curr.next;
         this.curr.next.prev = this.curr.prev;
+        /**Case for when you delete the last item. */
         if (this.curr == this.head) {
             this.head = this.head.next;
-            this.next();
-        } else if (this.curr.next == this.head) {
-            this.prev();
+        } 
+        if (this.curr.next == this.head) {
+            this.moveToStart();
+            this.size--;
+            return temp;
         } else {
             this.next();
+            this.size--;
+            return temp;
         }
-        this.size--;
-        return temp;
     }
 
     /**
@@ -251,6 +254,9 @@ public class CList<T> implements List<T> {
     }
 
     public String toString() {
+        if (this.size == 0) {
+            return "[]";
+        }
         Node temp = this.curr;
         this.moveToStart();
         String out = new String();
